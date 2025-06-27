@@ -239,7 +239,7 @@ function previewImage(event) {
 
 // --- REAL-TIME SOCKET.IO CONNECTION ---
 // Connect to the backend server for real-time features
-const socket = io();
+const socket = io('https://social-connect-f4rm.onrender.com')
 
 // --- REAL-TIME POSTS ---
 // Listen for all previous posts when connecting
