@@ -64,6 +64,12 @@ io.on('connection', (socket) => {
 // Serve your frontend files (index.html, app.js, etc.)
 app.use(express.static('.'));
 
-server.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+// Add a health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Server is running' });
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 }); 
