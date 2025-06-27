@@ -1,0 +1,488 @@
+/* =========================
+   Global Reset and Body
+   ========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width/height */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-image: url(./image/blur.png); /* Subtle background for the whole app */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: #8b97aa; */
+    color: #3a4452;
+}
+
+/* Main content container for centering and width control */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* =========================
+   Login and Signup Styles
+   ========================= */
+/* Centers the login and signup sections with a background image */
+.login-section, .signup-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(./image/ka.jpg); /* Distinct background for auth pages */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background: linear-gradient(135deg, #1ae81a, #4285f4); */
+}
+
+/* Card container for login and signup forms */
+.login-container, .signup-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for card effect */
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Styles the form layout for login and signup */
+.login-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between form fields */
+}
+
+/* =========================
+   Typography and Inputs
+   ========================= */
+/* Main heading style */
+h1 {
+    color: #1a73e8;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Styles for text, password, email inputs and textarea */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #1a73e8; /* Highlight input on focus */
+}
+
+/* =========================
+   Button Styles
+   ========================= */
+/* Primary button style */
+button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1557b0;
+}
+
+/* Secondary button style */
+.secondary-btn {
+    background-color: #f5f5f5;
+    color: #1a73e8;
+}
+
+.secondary-btn:hover {
+    background-color: #e8e8e8;
+}
+
+/* Error message text */
+.error-message {
+    color: #d93025;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   Main App Styles
+   ========================= */
+/* Top navigation bar */
+.top-nav {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for nav */
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Navigation content wrapper */
+.nav-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navigation title */
+.nav-content h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Navigation controls (right side) */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Welcome message for user */
+.user-welcome {
+    color: #1a73e8;
+    font-weight: 500;
+}
+
+/* Logout button in nav */
+.logout-btn {
+    padding: 0.5rem 1rem;
+}
+
+/* =========================
+   Post Creation Section
+   ========================= */
+/* Section for creating a new post */
+.create-post-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Post creation form container */
+.post-form {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Textarea for post content */
+.post-form textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+/* Image upload section in post form */
+.image-upload-section {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Hide default file input for image upload */
+.image-upload-section input[type="file"] {
+    display: none; /* Hide default file input */
+}
+
+/* Custom upload button for images */
+.upload-button {
+    background-color: #f0f2f5;
+    color: #1a73e8;
+    border: 1px solid #ddd;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.upload-button:hover {
+    background-color: #e8e8e8;
+}
+
+/* Preview of uploaded image */
+.image-preview {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Post form action buttons */
+.post-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Like/dislike and other post interactions */
+.post-interactions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Like and dislike buttons */
+.like-btn, .dislike-btn {
+    background-color: #f0f2f5;
+    color: #1c1e21;
+    border: 1px solid #ddd;
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-btn:hover, .dislike-btn:hover {
+    background-color: #e8e8e8;
+}
+
+/* Liked state for like button */
+.like-btn.liked {
+    background-color: #1a73e8;
+    color: white;
+    border-color: #1a73e8;
+}
+
+.like-btn.liked:hover {
+    background-color: #1557b0;
+    border-color: #1557b0;
+}
+
+/* Disliked state for dislike button */
+.dislike-btn.disliked {
+    background-color: #d93025;
+    color: white;
+    border-color: #d93025;
+}
+
+.dislike-btn.disliked:hover {
+    background-color: #b32a1f;
+    border-color: #b32a1f;
+}
+
+/* Like and dislike count display */
+.like-count, .dislike-count {
+    font-weight: bold;
+}
+
+/* =========================
+   Posts Feed Section
+   ========================= */
+/* Feed container for all posts */
+.posts-feed {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+}
+
+/* Individual post item */
+.post-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+/* Header of a post (author and time) */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+/* Author name in post */
+.post-author {
+    font-weight: 500;
+    color: #1a73e8;
+}
+
+/* Post time display */
+.post-time {
+    color: #70757a;
+    font-size: 0.9rem;
+}
+
+/* Main content of a post */
+.post-content {
+    margin-bottom: 1rem;
+    white-space: pre-wrap; /* Preserve line breaks in post text */
+}
+
+/* Post image wrapper */
+.post-image {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.post-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    height: auto;
+}
+
+/* Post action buttons (edit, delete, etc.) */
+.post-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* =========================
+   Admin Dashboard Section
+   ========================= */
+/* Admin navigation bar */
+.admin-nav {
+    background: #1a73e8;
+}
+
+.admin-nav h1,
+.admin-nav .logout-btn {
+    color: white;
+}
+
+/* Admin dashboard content wrapper */
+.admin-content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Admin statistics cards grid */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Individual stat card */
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stat-card i {
+    font-size: 2rem;
+    color: #1a73e8;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card h3 {
+    color: #70757a;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+/* Admin tables grid */
+.admin-tables {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+/* Data table in admin dashboard */
+.data-table {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================
+   Modal Styles
+   ========================= */
+/* Modal overlay background */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dimmed background overlay */
+    z-index: 1000;
+}
+
+/* Modal content box */
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 4rem auto;
+}
+
+/* Modal action buttons */
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* =========================
+   Responsive Design
+   ========================= */
+@media (max-width: 600px) {
+    /* Admin tables stack on small screens */
+    .admin-tables {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Smaller nav title on mobile */
+    .nav-content h1 {
+        font-size: 1.2rem;
+    }
+    
+    /* Smaller stat card padding on mobile */
+    .stat-card {
+        padding: 1rem;
+    }
+} 

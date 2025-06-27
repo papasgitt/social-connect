@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialConnect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+                                 <!-- Login Section -->   
+    <div id="loginSection" class="login-section">
+        <div class="login-container">
+            <h1><i class="fas fa-users"></i> SocialConnect</h1>
+            <div class="login-form">
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button onclick="login()">Login</button>
+                <button onclick="showSignup()" class="secondary-btn">Sign Up</button>
+                <p id="loginError" class="error-message"></p>
+            </div>
+        </div>
+    </div>
+
+                                <!-- Signup Section -->
+    <div id="signupSection" class="signup-section" style="display: none;">
+        <div class="signup-container">
+            <h1>Create Account</h1>
+            <div class="signup-form">
+                <input type="text" id="newUsername" placeholder="Choose Username">
+                <input type="password" id="newPassword" placeholder="Choose Password">
+                <input type="email" id="email" placeholder="Email Address">
+                <button onclick="signup()">Create Account</button>
+                <button onclick="showLogin()" class="secondary-btn">Back to Login</button>
+                <p id="signupError" class="error-message"></p>
+            </div>
+        </div>
+    </div>
+
+                                <!-- Main App Section -->
+    <div id="mainApp" class="main-app" style="display: none;">
+        <nav class="top-nav">
+            <div class="nav-content">
+                <h1><i class="fas fa-users"></i> SocialConnect</h1>
+                <div class="nav-controls">
+                    <span id="userWelcome" class="user-welcome"></span>
+                    <button onclick="logout()" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Create Post Section (used for both posts and chat) -->
+        <div class="create-post-section">
+            <div class="post-form">
+                <textarea id="postContent" placeholder="What's on your mind or chat..."></textarea>
+                <div class="image-upload-section">
+                    <input type="file" id="postImageUpload" accept="image/*" onchange="previewImage(event)">
+                    <label for="postImageUpload" class="upload-button">
+                        <i class="fas fa-image"></i> Add Image
+                    </label>
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+                <div class="post-actions" style="display: flex; gap: 0.5rem;">
+                    <button onclick="createPost()" class="post-btn">
+                        <i class="fas fa-paper-plane"></i> Post
+                    </button>
+                </div>
+            </div>
+        </div>
+
+                                  <!-- Posts Feed -->
+        <div id="postsFeed" class="posts-feed">
+            <!-- Posts will be dynamically added here -->
+        </div>
+    </div>
+
+                                   <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <nav class="top-nav admin-nav">
+            <div class="nav-content">
+                <h1><i class="fas fa-user-shield"></i> Admin Dashboard</h1>
+                <div class="nav-controls">
+                    <button onclick="logout()" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="admin-content">
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Total Users</h3>
+                    <p id="totalUsers">0</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Total Posts</h3>
+                    <p id="totalPosts">0</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Today's Posts</h3>
+                    <p id="todayPosts">0</p>
+                </div>
+            </div>
+
+            <div class="admin-tables">
+                <div class="users-table">
+                    <h2>User Management</h2>
+                    <div id="usersList" class="data-table">
+                        <!-- Users will be listed here -->
+                    </div>
+                </div>
+                <div class="posts-table">
+                    <h2>Post Management</h2>
+                    <div id="adminPostsList" class="data-table">
+                        <!-- Posts will be listed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                             <!-- Edit Post Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Post</h2>
+            <textarea id="editPostContent"></textarea>
+            <div class="modal-actions">
+                <button onclick="updatePost()">Update</button>
+                <button onclick="closeModal()" class="secondary-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML Templates -->
+    <template id="post-template">
+        <div class="post-item">
+            <div class="post-header">
+                <span class="post-author"></span>
+                <span class="post-time"></span>
+            </div>
+            <div class="post-content"></div>
+            <div class="post-image"></div>
+            <div class="post-interactions">
+                <button class="like-btn">
+                    <i class="fas fa-thumbs-up"></i> <span class="like-count">0</span>
+                </button>
+                <button class="dislike-btn">
+                    <i class="fas fa-thumbs-down"></i> <span class="dislike-count">0</span>
+                </button>
+            </div>
+            <div class="post-actions">
+                <button class="edit-btn secondary-btn"><i class="fas fa-edit"></i> Edit</button>
+                <button class="delete-btn secondary-btn"><i class="fas fa-trash"></i> Delete</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="admin-user-template">
+        <div class="table-row">
+            <div class="user-info">
+                <strong class="admin-user-username"></strong>
+                <small class="admin-user-email"></small>
+                <small class="admin-user-joined"></small>
+            </div>
+            <button class="delete-user-btn secondary-btn"><i class="fas fa-trash"></i> Delete</button>
+        </div>
+    </template>
+
+    <template id="admin-post-template">
+        <div class="table-row">
+            <div class="post-info">
+                <strong class="admin-post-author"></strong>
+                <p class="admin-post-content"></p>
+                <small class="admin-post-time"></small>
+            </div>
+            <div class="post-actions">
+                <button class="edit-btn secondary-btn"><i class="fas fa-edit"></i> Edit</button>
+                <button class="delete-btn secondary-btn"><i class="fas fa-trash"></i> Delete</button>
+            </div>
+        </div>
+    </template>
+
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
